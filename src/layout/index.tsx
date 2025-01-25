@@ -1,8 +1,7 @@
 import "./layout.scss";
 import Sidebar from "../components/sidebar";
 import Header from "../components/header";
-import Modal from "../components/add-modal";
-import EditModal from "../components/edit-modal";
+import Modal from "../components/modal";
 
 export interface LayoutProps {
   children?: React.ReactNode;
@@ -11,6 +10,7 @@ export interface LayoutProps {
   id?: number;
   isEditOpen?: boolean;
   setEditIsOpen?: (isEditOpen: boolean) => void;
+  btnValue: string;
 }
 
 const Layout = ({
@@ -20,18 +20,20 @@ const Layout = ({
   id,
   isEditOpen = false,
   setEditIsOpen = () => {},
+  btnValue,
 }: LayoutProps) => {
   return (
     <div className="layout">
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen} />
-      <EditModal
-        id={id}
+      <Modal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
         isEditOpen={isEditOpen}
         setEditIsOpen={setEditIsOpen}
+        id={id}
+        btnValue={btnValue}
       />
-
       <div className="container">
-        <div className={`main-section ${isOpen || isEditOpen ? "blur" : ""}`}>
+        <div className={`main-section ${isOpen ? "blur" : ""}`}>
           <Sidebar />
 
           <main

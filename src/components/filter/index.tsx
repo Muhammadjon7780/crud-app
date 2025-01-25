@@ -46,6 +46,7 @@ const Filter = ({ handleOpen }: FilterProps) => {
         onClick={handleOpen}
         className="branch_filter-btn"
         color="#FB551A"
+        value="add"
       >
         <img
           className="button-icon"

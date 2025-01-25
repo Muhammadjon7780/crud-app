@@ -1,5 +1,4 @@
 import Table from "../../components/table";
-
 import "./branch.scss";
 import { useState } from "react";
 import { useData } from "../../context/context";
@@ -12,6 +11,7 @@ const Branch = () => {
 
   const [isEditOpen, setEditIsOpen] = useState(false);
   const [clickId, setClickId] = useState<number | undefined>();
+  const [btnValue, setBtnValue] = useState<string>("");
 
   const handleEdit = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.dataset.id;
@@ -23,6 +23,7 @@ const Branch = () => {
     }
     e.stopPropagation();
     setEditIsOpen(true);
+    setIsOpen(true);
   };
 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -59,6 +60,8 @@ const Branch = () => {
 
   const handleOpen = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    const addBtnValue = e.currentTarget.value;
+    setBtnValue(addBtnValue);
     setIsOpen(!isOpen);
   };
 
@@ -69,6 +72,7 @@ const Branch = () => {
       id={clickId}
       isEditOpen={isEditOpen}
       setEditIsOpen={setEditIsOpen}
+      btnValue={btnValue}
     >
       <section className="branch">
         <Filter setIsOpen={setIsOpen} handleOpen={handleOpen} />

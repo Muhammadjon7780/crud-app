@@ -3,40 +3,46 @@ import Input from "../input";
 import Select from "../select";
 import cricleIcon from "../../assets/images/circle.svg";
 import arrowIcon from "../../assets/images/arrow.svg";
-import "./edit-modal.scss";
+import "./modal.scss";
 import Button from "../button";
 import { useEffect, useState } from "react";
 import { useData } from "../../context/context";
 
-interface EditModalProps {
-  isEditOpen: boolean;
-  setEditIsOpen: (isEditOpen: boolean) => void;
+interface ModalProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
   name?: string;
+  isEditOpen: boolean;
+  setEditIsOpen: (isEditOpen: boolean) => void;
   id?: number;
+  btnValue:string;
 }
 
-const EditModal: React.FC<EditModalProps> = ({
-  id,
-  setEditIsOpen,
+const Modal: React.FC<ModalProps> = ({
+  isOpen,
   isEditOpen,
+  id,
+  setIsOpen,
+  btnValue
 }) => {
   const { data, setData, originalData, setOriginalData } = useData();
 
-  const handleClose = () => setEditIsOpen(false);
+  const handleClose = () => setIsOpen(false);
 
   const findItem = data?.find((item) => item.id === id);
 
   const [formData, setFormData] = useState({
     name: "",
-    region: findItem?.region?.label,
+    region: "",
     login: "",
     password: "",
     phone: "",
-    leader: findItem?.leader?.label,
+    leader: "",
   });
+console.log(findItem);
 
   useEffect(() => {
     if (findItem) {
@@ -49,7 +55,17 @@ const EditModal: React.FC<EditModalProps> = ({
         leader: findItem.leader?.label || "",
       });
     }
-  }, [id, data]);
+    if (!isEditOpen) {
+      setFormData({
+        name: "",
+        region: "",
+        login: "",
+        password: "",
+        phone: "",
+        leader: "",
+      });
+    }
+  }, [id, data, isEditOpen]);
 
   const handleFieldChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -64,19 +80,8 @@ const EditModal: React.FC<EditModalProps> = ({
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const itemIndex = data?.findIndex((item) => item.id == id);
-
-    const itemShowIndex = originalData?.findIndex((item) => item.id == id);
-
-    if (itemIndex === undefined || itemIndex < 0) {
-      console.error("Element topilmadi, itemIndex:", itemIndex);
-      return;
-    }
-    if (itemShowIndex === undefined || itemShowIndex < 0) {
-      console.error("Element topilmadi, itemShowIndex:", itemShowIndex);
-      return;
-    }
-
+    
+    
     const findRegion = regionOptions.find(
       (region) => region.value === formData.region
     );
@@ -89,43 +94,102 @@ const EditModal: React.FC<EditModalProps> = ({
       formData.phone.trim() &&
       formData.login.trim() &&
       formData.password.trim() &&
-      formData.leader?.trim() &&
-      formData.region?.trim()
+      formData.leader.trim() &&
+      formData.region.trim()
     ) {
-      const newData = {
-        id: id!,
-        name: formData.name,
-        region: findRegion || findItem?.region,
-        login: formData.login,
-        password: formData.password,
-        phone: formData.phone,
-        leader: findLeader || findItem?.leader,
-      };
+      if (btnValue === "add") {
+        
+        const newData = {
+          id: Math.floor(Math.random() * 1000),
+          name: formData.name,
+          region: findRegion,
+          login: formData.login,
+          password: formData.password,
+          phone: formData.phone,
+          leader: findLeader,
+        };
+        
+        const addData = [newData, ...(data ?? [])];
+        
+        setData(addData);
+        setOriginalData(addData);
+        console.log(addData);
+        
+        localStorage.setItem("data", JSON.stringify(addData));
+        
+        setFormData({
+          name: "",
+          region: "",
+          login: "",
+          password: "",
+          phone: "",
+          leader: "",
+        });
+      }
 
-      const updatedData = [
-        ...(data ?? []).slice(0, itemIndex),
-        newData,
-        ...(data ?? []).slice(itemIndex + 1),
-      ];
-      const showUpdatedData = [
-        ...(data ?? []).slice(0, itemShowIndex),
-        newData,
-        ...(data ?? []).slice(itemShowIndex + 1),
-      ];
+      setIsOpen(false);
 
-      setData(updatedData);
-      setOriginalData(showUpdatedData);
+      if (findItem) {
+        const itemIndex = data?.findIndex((item) => item.id == id);
 
-      localStorage.setItem("data", JSON.stringify(updatedData));
+        const itemShowIndex = originalData?.findIndex((item) => item.id == id);
 
-      setEditIsOpen(false);
+        if (itemIndex === undefined || itemIndex < 0) {
+          console.error("Element topilmadi, itemIndex:", itemIndex);
+          return;
+        }
+        if (itemShowIndex === undefined || itemShowIndex < 0) {
+          console.error("Element topilmadi, itemShowIndex:", itemShowIndex);
+          return;
+        }
+
+        const editData = {
+          id: id!,
+          name: formData.name,
+          region: findRegion || findItem?.region,
+          login: formData.login,
+          password: formData.password,
+          phone: formData.phone,
+          leader: findLeader || findItem?.leader,
+        };
+
+        const updatedData = [
+          ...(data ?? []).slice(0, itemIndex),
+          editData,
+          ...(data ?? []).slice(itemIndex + 1),
+        ];
+        const showUpdatedData = [
+          ...(data ?? []).slice(0, itemShowIndex),
+          editData,
+          ...(data ?? []).slice(itemShowIndex + 1),
+        ];
+
+        setData(updatedData);
+        setOriginalData(showUpdatedData);
+
+        localStorage.setItem("data", JSON.stringify(updatedData));
+        setFormData({
+          name: "",
+          region: "",
+          login: "",
+          password: "",
+          phone: "",
+          leader: "",
+        });
+
+        // setEditIsOpen(false);
+      setIsOpen(false);
+
+      }
+    } else {
+      alert("Formani to'ldiring");
     }
   };
 
   return (
-    <div className={`modal ${isEditOpen ? "modal-open" : ""}`}>
+    <div className={`modal ${isOpen ? "modal-open" : ""}`}>
       <div className="modal-content">
-        <div className="edit-title-wrap">
+        <div className="title-wrap">
           <Button
             type="button"
             className="close-button"
@@ -140,7 +204,7 @@ const EditModal: React.FC<EditModalProps> = ({
               height={13}
             />
           </Button>
-          <h2 className="edit-modal-title">Filialni Taxrirlash</h2>
+          <h2 className="modal-title">Filial yaratish</h2>
         </div>
         <form onSubmit={handleFormSubmit}>
           <Input
@@ -207,4 +271,4 @@ const EditModal: React.FC<EditModalProps> = ({
     </div>
   );
 };
-export default EditModal;
+export default Modal;
