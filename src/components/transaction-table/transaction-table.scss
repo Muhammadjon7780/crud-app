@@ -1,0 +1,46 @@
+.table-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.transaction-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.transaction-table th,
+.transaction-table td {
+  padding: 10px;
+  text-align: left;
+}
+
+.transaction-table tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.transaction-table tr:last-child {
+  border-bottom: none;
+}
+
+.td-box {
+  display: flex;
+  align-items: center;
+}
+.item-type {
+  display: inline-block;
+}
+.cost-img {
+  margin-right: 8px;
+}

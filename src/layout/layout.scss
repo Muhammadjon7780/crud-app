@@ -1,0 +1,35 @@
+.container {
+  max-width: 1350px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 60px;
+  margin: 0 auto;
+}
+
+main {
+  width: 100%;
+}
+.main-section {
+  display: flex;
+  margin-top: 10px;
+}
+
+.page-section {
+  width: 100%;
+}
+
+.blur {
+  filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.branch {
+  margin-left: 16px;
+}
+.main-branch {
+  background-color: #fff;
+}
+
+.table-section {
+  background-color: #fff;
+}

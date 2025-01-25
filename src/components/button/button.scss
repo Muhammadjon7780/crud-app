@@ -1,0 +1,21 @@
+.button{
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 9px 12px;
+
+  &-icon{
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    margin-right: 5px;
+  }
+
+  &-text{
+    display: inline-block;
+  }
+}

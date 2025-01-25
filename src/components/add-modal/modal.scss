@@ -1,0 +1,83 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 23%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+
+  &-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 13px;
+    padding: 12px;
+    border-radius: 3px;
+    outline: none;
+    border: 1px solid #f0f0f0;
+  }
+
+  &-select {
+    display: block;
+    width: 100%;
+    margin-bottom: 13px;
+    padding: 12px;
+    border-radius: 3px;
+    outline: none;
+    color: #acacac;
+    border: 1px solid #f0f0f0;
+  }
+
+  &-open {
+    right: 0;
+  }
+
+  &-content {
+    padding: 15px;
+  }
+}
+
+.close-icon {
+  width: 12px;
+  height: 13px;
+}
+.close-button {
+  margin-right: 11px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.submit-button {
+  background-color: orange;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.open-modal-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.title-wrap {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.modal-title {
+  margin: 0;
+}
+.branch_add-btn {
+  margin-left: auto;
+}

@@ -1,0 +1,73 @@
+/* Filename - App.css*/
+.table-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.table-container {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+}
+
+.custom-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+.custom-table tr {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table td .icon {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.btn-wrap {
+  display: flex;
+  align-items: center;
+}
+.btn-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.row-link {
+  display: inline-block;
+  display: block;
+  color: #000;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+
+  &:hover {
+    color: #0f48f0;
+  }
+}
+
+.leader-td {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+}
+.leader-span {
+  display: inline-block;
+}

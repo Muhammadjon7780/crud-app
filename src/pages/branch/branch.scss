@@ -1,0 +1,50 @@
+.branch {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  height: 100vh;
+}
+.main-branch {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.table-section {
+  flex: 1;
+  background-color: #fff;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.filter-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.leader-select {
+  width: 131px;
+  margin-right: 8px;
+  border-radius: 3px;
+  padding: 6px 0px;
+}
+
+.region-select {
+  margin-right: 10px;
+  border-radius: 3px;
+  padding: 6px 2px;
+}
+
+.search-input {
+  display: inline-block;
+  width: 97px;
+  padding: 7px 2px;
+  border-radius: 3px;
+}
