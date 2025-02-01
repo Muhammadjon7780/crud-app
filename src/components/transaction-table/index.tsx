@@ -1,7 +1,9 @@
 import "./transaction-table.scss";
 import incomeImg from "../../assets/images/income.svg";
 import outputImg from "../../assets/images/output.svg";
-import { TableRow } from "../../data/data";
+import {TableRow } from "../../data/data";
+
+
 
 interface ITableProps {
   className?: string;
@@ -28,11 +30,17 @@ const TransactionTable = ({ className = "", header, columns }: ITableProps) => {
               <td>{++index}</td>
               <td>
                 <div className="td-box">
-                  {item.isIncome ? (
-                    <img src={incomeImg} alt="img" className="cost-img" />
-                  ) : (
-                    <img src={outputImg} alt="img" className="cost-img" />
-                  )}
+                  {
+                    item.isIncome? 
+                    (
+                      <img src={incomeImg} alt="img" className="cost-img" />
+
+                    )
+                    :
+                    (
+                      <img src={outputImg} alt="img" className="cost-img" />
+                    )
+                  }
                   <span className="item-type">{item.type} </span>
                 </div>
               </td>

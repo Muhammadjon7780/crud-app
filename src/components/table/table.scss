@@ -71,3 +71,10 @@
 .leader-span {
   display: inline-block;
 }
+.branch-row{
+cursor: pointer;
+  &:hover{
+    color: #0f48f0;
+  }
+}
+

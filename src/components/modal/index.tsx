@@ -18,7 +18,7 @@ interface ModalProps {
   isEditOpen: boolean;
   setEditIsOpen: (isEditOpen: boolean) => void;
   id?: number;
-  btnValue:string;
+  btnValue: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({
   isEditOpen,
   id,
   setIsOpen,
-  btnValue
+  btnValue,
 }) => {
   const { data, setData, originalData, setOriginalData } = useData();
 
@@ -42,7 +42,6 @@ const Modal: React.FC<ModalProps> = ({
     phone: "",
     leader: "",
   });
-console.log(findItem);
 
   useEffect(() => {
     if (findItem) {
@@ -80,8 +79,6 @@ console.log(findItem);
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    
-    
     const findRegion = regionOptions.find(
       (region) => region.value === formData.region
     );
@@ -98,7 +95,6 @@ console.log(findItem);
       formData.region.trim()
     ) {
       if (btnValue === "add") {
-        
         const newData = {
           id: Math.floor(Math.random() * 1000),
           name: formData.name,
@@ -108,15 +104,14 @@ console.log(findItem);
           phone: formData.phone,
           leader: findLeader,
         };
-        
+
         const addData = [newData, ...(data ?? [])];
-        
+
         setData(addData);
         setOriginalData(addData);
-        console.log(addData);
-        
+
         localStorage.setItem("data", JSON.stringify(addData));
-        
+
         setFormData({
           name: "",
           region: "",
@@ -177,9 +172,7 @@ console.log(findItem);
           leader: "",
         });
 
-        // setEditIsOpen(false);
-      setIsOpen(false);
-
+        setIsOpen(false);
       }
     } else {
       alert("Formani to'ldiring");

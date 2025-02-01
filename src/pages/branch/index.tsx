@@ -52,6 +52,7 @@ const Branch = () => {
 
         ...(data ?? []).slice(itemDeleteIndex + 1),
       ];
+      e.stopPropagation();
       setData(updatedData);
       setOriginalData(updatedData);
       localStorage.setItem("data", JSON.stringify(updatedData));
@@ -81,7 +82,7 @@ const Branch = () => {
             <Table
               columns={data}
               header={["№", "Nomi", "Viloyat", "Ma'sul shaxs"]}
-              className="branch-table"
+              className={`branch-table ${isOpen || isEditOpen ? "table-block" : ""}`}
               onEditClick={handleEdit}
               onDeleteClick={handleDelete}
             />

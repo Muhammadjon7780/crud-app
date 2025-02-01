@@ -10,7 +10,7 @@ export interface LayoutProps {
   id?: number;
   isEditOpen?: boolean;
   setEditIsOpen?: (isEditOpen: boolean) => void;
-  btnValue: string;
+  btnValue?: string;
 }
 
 const Layout = ({
@@ -20,7 +20,7 @@ const Layout = ({
   id,
   isEditOpen = false,
   setEditIsOpen = () => {},
-  btnValue,
+  btnValue="",
 }: LayoutProps) => {
   return (
     <div className="layout">
