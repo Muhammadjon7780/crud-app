@@ -9,7 +9,6 @@ import Button from "../../components/button";
 import TransactionTable from "../../components/transaction-table";
 import { tableData, TableRow, transactions } from "../../data/data";
 import { useState } from "react";
-import "./branch-item.scss";
 
 const BranchItem = () => {
   const [filterData, setFilterData] = useState<TableRow[] | []>(tableData);

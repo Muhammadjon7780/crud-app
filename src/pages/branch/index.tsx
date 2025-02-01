@@ -82,7 +82,9 @@ const Branch = () => {
             <Table
               columns={data}
               header={["№", "Nomi", "Viloyat", "Ma'sul shaxs"]}
-              className={`branch-table ${isOpen || isEditOpen ? "table-block" : ""}`}
+              className={`branch-table ${
+                isOpen || isEditOpen ? "table-block" : ""
+              }`}
               onEditClick={handleEdit}
               onDeleteClick={handleDelete}
             />

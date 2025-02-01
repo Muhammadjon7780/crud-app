@@ -20,7 +20,7 @@ const Layout = ({
   id,
   isEditOpen = false,
   setEditIsOpen = () => {},
-  btnValue="",
+  btnValue = "",
 }: LayoutProps) => {
   return (
     <div className="layout">

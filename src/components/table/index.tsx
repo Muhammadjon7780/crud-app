@@ -3,7 +3,7 @@ import "./table.scss";
 import editIcon from "../../assets/images/edit-svg.svg";
 import deleteIcon from "../../assets/images/delete-svg.svg";
 import { BranchProps } from "../../context/context";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface ITableProps {
   className?: string;
@@ -20,7 +20,6 @@ const Table = ({
   columns,
   onEditClick,
 }: ITableProps) => {
-
   const navigate = useNavigate();
 
   const handleRowClick = (id: number) => {
@@ -40,19 +39,24 @@ const Table = ({
         </thead>
         <tbody>
           {columns?.map((branch, index) => (
-            <tr className="branch-row" onClick={() => handleRowClick(branch.id)} key={index}>
+            <tr
+              className="branch-row"
+              onClick={() => handleRowClick(branch.id)}
+              key={index}
+            >
               <td>{++index}</td>
-              <td>
-                {/* <Link className="row-link" to={`branchitem/${branch.id}`}> */}
-                  {branch.name}
-                {/* </Link> */}
-              </td>
+              <td>{branch.name}</td>
               <td>{branch.region?.label}</td>
               <td className="leader-td">
                 <span className="leader-span">{branch.leader?.label}</span>
 
                 <div className="btn-wrap">
-                  <Button className="edit-btn" id={branch?.id} onClick={onEditClick} type="button">
+                  <Button
+                    className="edit-btn"
+                    id={branch?.id}
+                    onClick={onEditClick}
+                    type="button"
+                  >
                     <img
                       className="btn-icon"
                       src={editIcon}

@@ -1,32 +1,30 @@
-.header{
+.header {
   width: 100%;
-  // height: 67px;
   margin-right: auto;
   background-color: #fff;
   margin-bottom: 25px;
 }
 
-
-.nav{
-display: flex;
-align-items: center;
-justify-content: end;
-padding-top: 9px;
-padding-bottom: 10px;
-padding-right: 21px;
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-top: 9px;
+  padding-bottom: 10px;
+  padding-right: 21px;
 }
 
-.notificate{
+.notificate {
   display: inline-block;
   text-decoration: none;
   width: 28px;
   height: 28px;
   border-radius: 3px;
-  background-color: #FB551A;
+  background-color: #fb551a;
   position: relative;
   margin-right: 10px;
 
-  &-icon{
+  &-icon {
     display: inline-block;
     width: 12px;
     height: 13px;
@@ -35,16 +33,16 @@ padding-right: 21px;
     left: 8px;
   }
 }
-.user{
+.user {
   display: inline-block;
   text-decoration: none;
   width: 28px;
   height: 28px;
   border-radius: 3px;
-  background-color: #FFD5C6;
+  background-color: #ffd5c6;
   position: relative;
 
-  &-icon{
+  &-icon {
     display: inline-block;
     width: 12px;
     height: 13px;

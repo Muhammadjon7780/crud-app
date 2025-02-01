@@ -1,4 +1,4 @@
-.button{
+.button {
   display: flex;
   align-items: center;
   background-color: transparent;
@@ -8,14 +8,14 @@
   cursor: pointer;
   padding: 9px 12px;
 
-  &-icon{
+  &-icon {
     display: inline-block;
     width: 11px;
     height: 11px;
     margin-right: 5px;
   }
 
-  &-text{
+  &-text {
     display: inline-block;
   }
 }
